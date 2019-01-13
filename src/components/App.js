@@ -5,6 +5,7 @@ import Home from './Home'
 import { Route, Switch } from 'react-router-dom'
 import Login from '../components/Login'
 import Register from '../components/Register'
+import Settings from '../components/Settings'
 import agent from '../agent'
 import { store } from '../store'
 import { push } from 'react-router-redux'
@@ -51,6 +52,7 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/Register" component={Register} />
+          <Route path="/settings" component={Settings} />
         </Switch>
       </div>
     )
