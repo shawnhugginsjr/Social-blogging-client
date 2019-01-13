@@ -10,7 +10,12 @@ const defaultState = {
   articles: null
 }
 const reducer = function (state = defaultState, action) {
-  return state
+  switch (action.type) {
+    case 'HOME_PAGE_LOADED':
+      return { ...state, articles: action.payload.articles }
+    default:
+      return state
+  }
 }
 
 const store = createStore(reducer, applyMiddleware(promiseMiddleware))
