@@ -16,8 +16,8 @@ Local web server will use port 4100 as api requests are expected to be made on p
 ## General Functionality
 
 - Authenticate users via JWT (login/signup pages)
-- CR** users (sign up & settings page - no deleting required)
-- *R** Articles
+- Create and Read users (sign up & settings page)
+- Retrieve a list of Articles
 
 
    
