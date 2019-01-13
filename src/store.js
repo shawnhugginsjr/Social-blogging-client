@@ -1,25 +1,21 @@
-import { applyMiddleware, createStore } from 'redux'
+import { applyMiddleware, createStore, combineReducers } from 'redux'
 import { promiseMiddleware } from './middleware'
 import { routerMiddleware } from 'react-router-redux'
-import createHistory from 'history/createBrowserHistory';
+import createHistory from 'history/createBrowserHistory'
+import auth from './reducers/auth'
+import common from './reducers/common'
+import home from './reducers/home'
 
 export const history = createHistory();
 
 // Build the middleware for intercepting and dispatching navigation actions
 const myRouterMiddleware = routerMiddleware(history);
 
-const defaultState = {
-  appName: 'article-client',
-  articles: null
-}
-const reducer = function (state = defaultState, action) {
-  switch (action.type) {
-    case 'HOME_PAGE_LOADED':
-      return { ...state, articles: action.payload.articles }
-    default:
-      return state
-  }
-}
+const reducer = combineReducers({
+  auth,
+  common,
+  home
+})
 
 applyMiddleware(myRouterMiddleware, promiseMiddleware)
 

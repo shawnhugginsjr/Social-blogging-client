@@ -7,7 +7,7 @@ class Header extends React.Component {
       <nav className="navbar navbar-light">
         <div className="container">
           <Link to="/" className="navbar-brand">
-            {this.props.appName.toLowerCase()}
+            {this.props.appName}
           </Link>
 
           <ul className="nav navbar-nav pull-xs-right">

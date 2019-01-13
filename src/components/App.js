@@ -6,7 +6,7 @@ import { Route, Switch } from 'react-router-dom'
 import Login from '../components/Login'
 
 const mapStateToProps = (state) => {
-  return { appName: state.appName }
+  return { appName: state.common.appName }
 }
 
 class App extends React.Component {
