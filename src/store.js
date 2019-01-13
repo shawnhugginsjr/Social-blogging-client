@@ -1,5 +1,5 @@
 import { applyMiddleware, createStore, combineReducers } from 'redux'
-import { promiseMiddleware } from './middleware'
+import { promiseMiddleware, localStorageMiddleware  } from './middleware'
 import { routerMiddleware } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
 import auth from './reducers/auth'
@@ -17,6 +17,6 @@ const reducer = combineReducers({
   home
 })
 
-applyMiddleware(myRouterMiddleware, promiseMiddleware)
+const middleware = applyMiddleware(myRouterMiddleware, promiseMiddleware, localStorageMiddleware)
 
-export const store = createStore(reducer, applyMiddleware(promiseMiddleware))
+export const store = createStore(reducer, middleware)
