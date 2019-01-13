@@ -4,6 +4,7 @@ import Header from './Header'
 import Home from './Home'
 import { Route, Switch } from 'react-router-dom'
 import Login from '../components/Login'
+import Register from '../components/Register'
 import agent from '../agent'
 import { store } from '../store'
 import { push } from 'react-router-redux'
@@ -49,6 +50,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
+          <Route path="/Register" component={Register} />
         </Switch>
       </div>
     )
