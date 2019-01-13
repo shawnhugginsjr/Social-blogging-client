@@ -20,4 +20,5 @@ Local web server will use port 4100 as api requests are expected to be made on p
 - Retrieve a list of Articles
 
 
-   
+
+![home page](https://github.com/shawnhugginsjr/Social-blogging-client/blob/master/Readme_images/Home.png)
