@@ -30,6 +30,8 @@ const Articles = {
     requests.get(`/articles?limit=10`),
   byAuthor: (author, page) =>
     requests.get(`/articles?author=${encodeURIComponent(author)}&limit=5`),
+  byTag: (tag, page) =>
+    requests.get(`/articles?tag=${encodeURIComponent(tag)}&limit=10`),
   favoritedBy: (author, page) =>
     requests.get(`/articles?favorited=${encodeURIComponent(author)}&limit=5`),
   get: (slug) =>
