@@ -1,4 +1,4 @@
-//import ArticleMeta from './ArticleMeta'
+import ArticleMeta from './ArticleMeta'
 //import CommentContainer from './CommentContainer'
 import { Link } from 'react-router-dom'
 import React from 'react'
@@ -44,9 +44,9 @@ class Article extends React.Component {
           <div className="container">
 
             <h1>{this.props.article.title}</h1>
-            {/* <ArticleMeta
+            <ArticleMeta
               article={this.props.article}
-              canModify={canModify} /> */}
+              canModify={canModify} />
           </div>
         </div>
 
