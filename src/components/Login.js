@@ -11,7 +11,9 @@ const mapDispatchToProps = dispatch => ({
   onChangePassword: value =>
     dispatch({ type: 'UPDATE_FIELD_AUTH', key: 'password', value }),
   onSubmit: (email, password) =>
-    dispatch({ type: 'LOGIN', payload: agent.Auth.login(email, password) })
+    dispatch({ type: 'LOGIN', payload: agent.Auth.login(email, password) }),
+  onUnmount: () =>
+    dispatch({ type: 'LOGIN_PAGE_UNMOUNTED' })
 })
 
 class Login extends React.Component {
@@ -23,6 +25,11 @@ class Login extends React.Component {
     event.preventDefault();
     this.props.onSubmit(email, password);
   }
+
+  componentWillUnmount = () => {
+    this.props.onUnmount()
+  }
+
   render() {
     const { email, password } = this.props
     return (
@@ -38,7 +45,7 @@ class Login extends React.Component {
                 </a>
               </p>
 
-              <ListErrors errors={this.props.errors} />              
+              <ListErrors errors={this.props.errors} />
 
               <form onSubmit={this.submitForm(email, password)}>
                 <fieldset>
