@@ -9,6 +9,7 @@ import Settings from '../components/Settings'
 import agent from '../agent'
 import Article from './Article'
 import Profile from './Profile'
+import ProfileFavorites from './ProfileFavorites'
 import { store } from '../store'
 import { push } from 'react-router-redux'
 
@@ -56,6 +57,7 @@ class App extends React.Component {
           <Route path="/Register" component={Register} />
           <Route path="/settings" component={Settings} />
           <Route path="/article/:id" component={Article} />
+          <Route path="/@:username/favorites" component={ProfileFavorites} />
           <Route path="/@:username" component={Profile} />
         </Switch>
       </div>

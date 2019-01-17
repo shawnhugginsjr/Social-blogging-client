@@ -8,7 +8,7 @@ const EditProfileSettings = props => {
   if (props.isUser) {
     return (
       <Link
-        to="settings"
+        to="/settings"
         className="btn btn-sm btn-outline-secondary action-btn">
         <i className="ion-gear-a"></i> Edit Profile Settings
       </Link>
@@ -86,7 +86,7 @@ class Profile extends React.Component {
         <li className="nav-item">
           <Link
             className="nav-link active"
-            to={`@${this.props.profile.username}`}>
+            to={`/@${this.props.profile.username}`}>
             My Articles
           </Link>
         </li>
@@ -94,7 +94,7 @@ class Profile extends React.Component {
         <li className="nav-item">
           <Link
             className="nav-link"
-            to={`@${this.props.profile.username}/favorites`}>
+            to={`/@${this.props.profile.username}/favorites`}>
             Favorited Articles
           </Link>
         </li>
@@ -136,9 +136,7 @@ class Profile extends React.Component {
 
         <div className="container">
           <div className="row">
-
             <div className="col-xs-12 col-md-10 offset-md-1">
-
               <div className="articles-toggle">
                 {this.renderTabs()}
               </div>
@@ -146,10 +144,8 @@ class Profile extends React.Component {
               <ArticleList
                 articles={this.props.articles} />
             </div>
-
           </div>
         </div>
-
       </div>
     )
   }
