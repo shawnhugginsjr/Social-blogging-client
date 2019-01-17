@@ -6,6 +6,7 @@ import auth from './reducers/auth'
 import common from './reducers/common'
 import home from './reducers/home'
 import settings from './reducers/settings'
+import article from './reducers/article'
 
 export const history = createHistory();
 
@@ -14,6 +15,7 @@ const myRouterMiddleware = routerMiddleware(history);
 
 const reducer = combineReducers({
   auth,
+  article,
   common,
   home,
   settings
