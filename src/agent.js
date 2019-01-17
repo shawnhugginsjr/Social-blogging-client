@@ -6,12 +6,18 @@ const superagent = superagentPromise(_superagent, global.Promise)
 const API_ROOT = 'http://localhost:3000/api'
 
 const responseBody = (res) => { return res.body }
+
 let token = null
+const setAuthHeader = req => {
+  if (token) {
+    req.set('authorization', `Token ${token}`);
+  }
+}
 
 const requests = {
-  get: (url) => superagent.get(`${API_ROOT}${url}`).then(responseBody),
-  post: (url, body) => superagent.post(`${API_ROOT}${url}`, body).then(responseBody),
-  put: (url, body) => superagent.put(`${API_ROOT}${url}`, body).then(responseBody)
+  get: (url) => superagent.get(`${API_ROOT}${url}`).use(setAuthHeader).then(responseBody),
+  post: (url, body) => superagent.post(`${API_ROOT}${url}`, body).use(setAuthHeader).then(responseBody),
+  put: (url, body) => superagent.put(`${API_ROOT}${url}`, body).use(setAuthHeader).then(responseBody)
 }
 
 const Articles = {

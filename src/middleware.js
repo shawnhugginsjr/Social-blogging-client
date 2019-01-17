@@ -29,8 +29,6 @@ function isPromise(v) {
 const localStorageMiddleware = store => next => action => {
   if (action.type === 'REGISTER' || action.type === 'LOGIN') {
     if (!action.error) {
-      console.log('About to save uer token')
-      console.log('action.payload.user.token')
       window.localStorage.setItem('jwt', action.payload.user.token)
       agent.setToken(action.payload.user.token)
     }
