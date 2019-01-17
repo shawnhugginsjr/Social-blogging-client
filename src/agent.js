@@ -28,6 +28,8 @@ const requests = {
 const Articles = {
   all: (page) =>
     requests.get(`/articles?limit=10`),
+  byAuthor: (author, page) =>
+    requests.get(`/articles?author=${encodeURIComponent(author)}&limit=5`),
   get: (slug) =>
     requests.get(`/articles/${slug}`),
   del: (slug) =>
