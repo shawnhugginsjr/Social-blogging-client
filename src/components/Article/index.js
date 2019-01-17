@@ -1,5 +1,5 @@
 import ArticleMeta from './ArticleMeta'
-//import CommentContainer from './CommentContainer'
+import CommentContainer from './CommentContainer'
 import { Link } from 'react-router-dom'
 import React from 'react'
 import agent from '../../agent'
@@ -73,13 +73,13 @@ class Article extends React.Component {
           <div className="article-actions">
           </div>
 
-          {/* <div className="row">
+          <div className="row">
             <CommentContainer
               comments={this.props.comments || []}
               errors={this.props.commentErrors}
               slug={this.props.match.params.id}
               currentUser={this.props.currentUser} />
-          </div> */}
+          </div>
         </div>
       </div>
     )
