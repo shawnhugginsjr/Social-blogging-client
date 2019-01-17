@@ -7,19 +7,30 @@ import agent from '../../agent'
 const Promise = global.Promise;
 
 const mapStateToProps = (state) => {
-  return { appName: state.appName }
+  return {
+    appName: state.appName,
+    token: state.common.token
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onLoad: (payload) => dispatch({ type: 'HOME_PAGE_LOADED', payload })
+    onLoad: (tab, payload) =>
+      dispatch({ type: 'HOME_PAGE_LOADED', tab, payload }),
+    onUnload: () =>
+      dispatch({ type: 'HOME_PAGE_UNLOADED' })
   }
 }
 
 class Home extends React.Component {
 
   componentWillMount = () => {
-    this.props.onLoad(agent.Articles.all())
+    const tab = this.props.token ? 'feed' : 'all'
+    const articlesPromise = this.props.token ?
+      agent.Articles.feed() :
+      agent.Articles.all();
+
+    this.props.onLoad(tab, articlesPromise);
   }
 
   render() {

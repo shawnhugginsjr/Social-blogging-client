@@ -4,7 +4,15 @@ export default (state = {}, action) => {
       return {
         ...state,
         articles: action.payload.articles,
-        articlesCount: action.payload.articlesCount
+        articlesCount: action.payload.articlesCount,
+        tab: action.tab
+      }
+    case 'CHANGE_TAB':
+      return {
+        ...state,
+        articles: action.payload.articles,
+        articlesCount: action.payload.articlesCount,
+        tab: action.tab
       }
     case 'HOME_PAGE_UNLOADED':
       return {}

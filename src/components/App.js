@@ -47,19 +47,28 @@ class App extends React.Component {
   }
 
   render() {
+    if (this.props.appLoaded) {
+      return (
+        <div>
+          <Header appName={this.props.appName}
+            currentUser={this.props.currentUser} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/login" component={Login} />
+            <Route path="/Register" component={Register} />
+            <Route path="/settings" component={Settings} />
+            <Route path="/article/:id" component={Article} />
+            <Route path="/@:username/favorites" component={ProfileFavorites} />
+            <Route path="/@:username" component={Profile} />
+          </Switch>
+        </div>
+      )
+    }
     return (
       <div>
-        <Header appName={this.props.appName}
+        <Header
+          appName={this.props.appName}
           currentUser={this.props.currentUser} />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/Register" component={Register} />
-          <Route path="/settings" component={Settings} />
-          <Route path="/article/:id" component={Article} />
-          <Route path="/@:username/favorites" component={ProfileFavorites} />
-          <Route path="/@:username" component={Profile} />
-        </Switch>
       </div>
     )
   }
