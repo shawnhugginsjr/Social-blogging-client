@@ -68,10 +68,15 @@ const Profile = {
     requests.del(`/profiles/${username}/follow`)
 }
 
+const Tags = {
+  getAll: () => requests.get('/tags')
+}
+
 export default {
   Articles,
   Auth,
   Comments,
   Profile,
+  Tags,
   setToken: _token => { token = _token }
 }
