@@ -6,7 +6,6 @@ import agent from '../../agent'
 
 const YourFeedTab = props => {
   if (props.token) {
-    console.log('feed tab')
     const clickHandler = ev => {
       ev.preventDefault()
       props.onTabClick('feed', agent.Articles.feed())
