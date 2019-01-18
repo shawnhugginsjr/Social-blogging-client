@@ -65,7 +65,8 @@ const mapDispatchToProps = dispatch => ({
     type: 'UNFOLLOW_USER',
     payload: agent.Profile.unfollow(username)
   }),
-  onUnload: () => dispatch({ type: 'PROFILE_PAGE_UNLOADED' })
+  onUnload: () => dispatch({ type: 'PROFILE_PAGE_UNLOADED' }),
+  onSetPage: (page, payload) => dispatch({ type: 'SET_PAGE', page, payload })
 })
 
 class Profile extends React.Component {
@@ -78,6 +79,11 @@ class Profile extends React.Component {
 
   componentWillUnmount() {
     this.props.onUnload()
+  }
+
+  onSetPage(page) {
+    const promise = agent.Articles.byAuthor(this.props.profile.username, page);
+    this.props.onSetPage(page, promise);
   }
 
   renderTabs() {
@@ -142,7 +148,10 @@ class Profile extends React.Component {
               </div>
 
               <ArticleList
-                articles={this.props.articles} />
+                articles={this.props.articles}
+                articlesCount={this.props.articlesCount}
+                currentPage={this.props.currentPage}
+                onSetPage={this.onSetPage} />
             </div>
           </div>
         </div>
