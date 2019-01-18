@@ -9,6 +9,7 @@ import settings from './reducers/settings'
 import article from './reducers/article'
 import articleList from './reducers/articleList'
 import profile from './reducers/profile'
+import editor from './reducers/editor'
 
 export const history = createHistory();
 
@@ -22,7 +23,8 @@ const reducer = combineReducers({
   common,
   home,
   profile,
-  settings
+  settings,
+  editor
 })
 
 const middleware = applyMiddleware(myRouterMiddleware, promiseMiddleware, localStorageMiddleware)

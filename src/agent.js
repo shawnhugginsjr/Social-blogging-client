@@ -26,6 +26,7 @@ const requests = {
 }
 
 const limit = (count, p) => `limit=${count}&offset=${p ? p * count : 0}`
+const omitSlug = (article) => Object.assign({}, article, { slug: undefined })
 const Articles = {
   all: (page) =>
     requests.get(`/articles?${limit(10, page)}`),
@@ -40,7 +41,11 @@ const Articles = {
   feed: () =>
     requests.get('/articles/feed?${limit(10, page)}'),
   del: (slug) =>
-    requests.del(`/articles/${slug}`)
+    requests.del(`/articles/${slug}`),
+  update: article =>
+    requests.put(`/articles/${article.slug}`, { article: omitSlug(article) }),
+  create: article =>
+    requests.post('/articles', { article })
 }
 
 const Comments = {

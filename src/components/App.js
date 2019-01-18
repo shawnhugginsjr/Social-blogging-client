@@ -10,6 +10,7 @@ import agent from '../agent'
 import Article from './Article'
 import Profile from './Profile'
 import ProfileFavorites from './ProfileFavorites'
+import Editor from './Editor'
 import { store } from '../store'
 import { push } from 'react-router-redux'
 
@@ -53,11 +54,13 @@ class App extends React.Component {
           <Header appName={this.props.appName}
             currentUser={this.props.currentUser} />
           <Switch>
-            <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Home}/>
             <Route path="/login" component={Login} />
             <Route path="/Register" component={Register} />
-            <Route path="/settings" component={Settings} />
+            <Route path="/editor/:slug" component={Editor} />
+            <Route path="/editor" component={Editor} />
             <Route path="/article/:id" component={Article} />
+            <Route path="/settings" component={Settings} />
             <Route path="/@:username/favorites" component={ProfileFavorites} />
             <Route path="/@:username" component={Profile} />
           </Switch>
