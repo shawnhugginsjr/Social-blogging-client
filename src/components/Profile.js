@@ -110,7 +110,7 @@ class Profile extends React.Component {
 
   render() {
     const profile = this.props.profile
-    if (!profile) {
+    if (Object.keys(profile).length === 0) {
       return null
     }
 
