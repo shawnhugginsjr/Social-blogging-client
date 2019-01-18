@@ -1,5 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+const mapDispatchToProps = dispatch => ({
+  onUnload: () => dispatch({ type: 'CURRENT_USER_PROFILE_HEADER_CLICKED' })
+})
+
+const mapStateToProps = state => {
+  return {
+    appName: state.common.appName,
+    currentUser: state.common.currentUser,
+    profileUser: state.profile.username
+  }
+}
 
 const UserStatus = (props) => {
   if (!props.currentUser) {
@@ -24,11 +37,19 @@ const UserStatus = (props) => {
             Sign up
           </Link>
         </li>
-
       </ul>
-    );
+    )
   } else {
     // render the user logged in view
+
+    // Go to the current user's profile if they're not already
+    // on their profile page
+    const goToProfile = () => {
+      if (props.currentUser.username !== props.profileUser) {
+        return props.onUnload()
+      }
+    }
+
     return (
       <ul className="nav navbar-nav pull-xs-right">
 
@@ -52,6 +73,7 @@ const UserStatus = (props) => {
 
         <li className="nav-item">
           <Link
+            onClick={goToProfile}
             to={`/@${props.currentUser.username}`}
             className="nav-link">
             <img src={props.currentUser.image} className="user-pic" />
@@ -73,11 +95,16 @@ class Header extends React.Component {
             {this.props.appName}
           </Link>
 
-          <UserStatus currentUser={this.props.currentUser} />
+          <UserStatus 
+            currentUser={this.props.currentUser} 
+            onUnload={this.props.onUnload}
+            profileUser={this.props.profileUser}
+            />
         </div>
       </nav>
     )
   }
 }
 
-export default Header
+//export default Header
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

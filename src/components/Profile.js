@@ -43,7 +43,6 @@ const FollowUserButton = props => {
       className={classes}
       onClick={handleClick}>
       <i className="ion-plus-round"></i>
-      &nbsp
       {props.user.following ? 'Unfollow' : 'Follow'} {props.user.username}
     </button>
   )
@@ -81,6 +80,16 @@ class Profile extends React.Component {
     this.props.onUnload()
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.profile.profileClicked) {
+      this.props.onLoad(Promise.all([
+        agent.Profile.get(nextProps.currentUser.username),
+        agent.Articles.byAuthor(nextProps.currentUser.username)
+      ]))
+      return
+    }
+  }
+
   onSetPage(page) {
     const promise = agent.Articles.byAuthor(this.props.profile.username, page);
     this.props.onSetPage(page, promise);
@@ -110,7 +119,7 @@ class Profile extends React.Component {
 
   render() {
     const profile = this.props.profile
-    if (Object.keys(profile).length === 0) {
+    if (Object.keys(profile).length === 0 || profile.profileClicked) {
       return null
     }
 

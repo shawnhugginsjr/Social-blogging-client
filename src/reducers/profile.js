@@ -13,6 +13,10 @@ export default (state = {}, action) => {
       return {
         ...action.payload.profile
       }
+    case 'CURRENT_USER_PROFILE_HEADER_CLICKED':
+      return {
+        profileClicked: true
+      }
   }
 
   return state
