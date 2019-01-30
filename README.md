@@ -1,7 +1,6 @@
 # Social-blogging-client
 
 A React/Redux Application that consumes the [Social blogging api](https://github.com/shawnhugginsjr/Social-blogging-client).
-The client is still in active development.
 
 ## Getting started
 
@@ -15,10 +14,13 @@ Local web server will use port 4100 as api requests are expected to be made on p
 
 ## General Functionality
 
-- Authenticate users via JWT (login/signup pages)
-- Create and Read users (sign up & settings page)
-- Retrieve a list of Articles
-
+- Authenticate users via JWT
+- CRU* users 
+- CRUD Articles
+- CR*D Comments on articles
+- GET and display paginated lists of articles
+- Favorite articles
+- Follow other users
 
 
 ![home page](https://github.com/shawnhugginsjr/Social-blogging-client/blob/master/Readme_images/Home.png)
